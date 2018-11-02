@@ -55,8 +55,8 @@ class OffsetTest < Minitest::Test
     @offset.b_offset(date)
     @offset.c_offset(date)
     @offset.d_offset(date)
-    @offset.gather_offset_values
-    assert_equal ({A: 1, B: 0, C: 2, D: 5})
+    # @offset.gather_offset_values
+    assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
   def test_it_can_generate_keys

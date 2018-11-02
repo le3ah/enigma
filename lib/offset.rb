@@ -1,4 +1,5 @@
 class Offset
+  attr_reader :encryption_alphabet
   def initialize
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
@@ -12,23 +13,28 @@ class Offset
   end
 
   def a_offset(date)
-    @encryption_alphabet = { A: last_four_digits(date)[0].to_i}
+    @encryption_alphabet[:A] = last_four_digits(date)[0].to_i
+    @encryption_alphabet
   end
 
   def b_offset(date)
-    @encryption_alphabet = { B: last_four_digits(date)[1].to_i}
+    @encryption_alphabet[:B] = last_four_digits(date)[1].to_i
+    @encryption_alphabet
   end
 
   def c_offset(date)
-    @encryption_alphabet = { C: last_four_digits(date)[2].to_i}
+    @encryption_alphabet[:C] = last_four_digits(date)[2].to_i
+    @encryption_alphabet
   end
 
   def d_offset(date)
-    @encryption_alphabet = { D: last_four_digits(date)[3].to_i}
+    @encryption_alphabet[:D] = last_four_digits(date)[3].to_i
+    @encryption_alphabet
   end
 
-  def gather_offset_values
-  end
+  # def gather_offset_values
+  #   @encryption_alphabet
+  # end
 
   def key_generation
       rand(99999).to_s.rjust(5)
