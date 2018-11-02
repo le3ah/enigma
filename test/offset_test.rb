@@ -56,4 +56,12 @@ class OffsetTest < Minitest::Test
     assert_equal expected, @offset.key_start_values('02715')
     assert_equal 4, @offset.key_start_values.length
   end
+
+  def test_it_can_find_final_shift_value
+    date = "040895"
+    last_four_digits(date)
+    offset.key_start_values('02715')
+    expected = ({A: 3, B: 27, C: 73, D: 20})
+    assert_equal expected, @offset.final_shift
+  end
 end
