@@ -1,5 +1,6 @@
 class Offset
   def initialize
+    @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
   end
   def offset_by_date(date)
@@ -27,10 +28,18 @@ class Offset
   end
 
   def key_generation
-    if rand(99999).to_s.length < 5
-      rand(99999).rjust(5).to_s
-    else
-      rand(99999).to_s
-    end
+      rand(99999).to_s.rjust(5)
+  end
+
+  def key_start_values(random)
+    # if random == nil
+    #   random = key_generation
+    # end
+    key_array = random.chars
+      @starting_alphabet[:A] = key_array[0,2].join
+      @starting_alphabet[:B] = key_array[1,2].join
+      @starting_alphabet[:C] = key_array[2,2].join
+      @starting_alphabet[:D] = key_array[3,2].join
+      @starting_alphabet
   end
 end

@@ -53,6 +53,6 @@ class OffsetTest < Minitest::Test
 
   def test_it_can_assign_key_start_values
     expected = ({A: '02', B: '27', C: '71', D: '15'})
-    assert_equal expected, @offset.key_start_values
+    assert_equal expected, @offset.key_start_values('02715')
   end
 end
