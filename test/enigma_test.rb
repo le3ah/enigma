@@ -1,7 +1,4 @@
-# require 'minitest/autorun'
-# require 'minitest/pride'
 require_relative './test_helper'
-# require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -17,16 +14,26 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @e.character_set
   end
 
-  def test_it_can_rotate_alphabet_by_final_shift
-
-  end
+  # def test_it_can_rotate_alphabet_by_final_shift
+  #   @offset = Offset.new
+  #   date = "040895"
+  #   @offset.offset_by_date(date)
+  #   @offset.last_four_digits(date)
+  #   @offset.a_offset(date)
+  #   @offset.b_offset(date)
+  #   @offset.c_offset(date)
+  #   @offset.d_offset(date)
+  #   @offset.key_start_values('02715')
+  #   @offset.final_shift
+  #   message = "hello world"
+  #
+  # end
 
   # def test_it_can_encrypt_my_message
-  #   my_message = "this is so secret ..end.."
-  #   output_1 = @e.encrypt(my_message, "12345", Date.today)
-  #   assert_equal '12345ljk', output_1
-  #   output_2 = @e.encrypt(my_message)
-  #   assert_equal '1234lkjuoiu', output_2
+  #   message = "hello world"
+  #   output = @e.encrypt(message, "02715", "040895")
+  #   expected = ({encryption: "keder ohulw", key: "02715", date: "040895"})
+  #   assert_equal expected, output
   # end
 
 
