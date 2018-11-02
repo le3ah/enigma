@@ -1,7 +1,7 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+# require 'minitest/autorun'
+# require 'minitest/pride'
 require_relative './test_helper'
-require './lib/enigma'
+# require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def setup
