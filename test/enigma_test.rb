@@ -17,6 +17,10 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @e.character_set
   end
 
+  def test_it_can_rotate_alphabet_by_final_shift
+
+  end
+
   # def test_it_can_encrypt_my_message
   #   my_message = "this is so secret ..end.."
   #   output_1 = @e.encrypt(my_message, "12345", Date.today)
