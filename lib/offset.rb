@@ -21,4 +21,8 @@ class Offset
   def c_offset(date)
     @encryption_alphabet = { C: last_four_digits(date)[2]}
   end
+
+  def d_offset(date)
+    @encryption_alphabet = { D: last_four_digits(date)[3]}
+  end
 end
