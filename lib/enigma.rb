@@ -2,4 +2,9 @@ require 'date'
 
 class Enigma
 
-end 
+ def encrypt(message, key = "12345", date = Date.today)
+
+ end
+
+ 
+end
