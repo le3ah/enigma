@@ -23,29 +23,41 @@ class OffsetTest < Minitest::Test
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({A: "1"}), @offset.a_offset(date)
+    assert_equal ({A: 1}), @offset.a_offset(date)
   end
 
   def test_it_can_assign_b_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({B: "0"}), @offset.b_offset(date)
+    assert_equal ({B: 0}), @offset.b_offset(date)
   end
 
   def test_it_can_assign_c_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({C: "2"}), @offset.c_offset(date)
+    assert_equal ({C: 2}), @offset.c_offset(date)
   end
 
   def test_it_can_assign_c_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({D: "5"}), @offset.d_offset(date)
+    assert_equal ({D: 5}), @offset.d_offset(date)
   end
+
+  # def test_it_can_gather_offset_values
+  #   date = "040895"
+  #   @offset.offset_by_date(date)
+  #   @offset.last_four_digits(date)
+  #   @offset.a_offset(date)
+  #   @offset.b_offset(date)
+  #   @offset.c_offset(date)
+  #   @offset.d_offset(date)
+  #   @offset.gather_offset_values
+  #   assert_equal ({A: })
+  # end
 
   def test_it_can_generate_keys
     assert_equal 5, @offset.key_generation.length
@@ -57,11 +69,11 @@ class OffsetTest < Minitest::Test
     assert_equal 4, @offset.key_start_values.length
   end
 
-  def test_it_can_find_final_shift_value
-    date = "040895"
-    @offset.last_four_digits(date)
-    @offset.key_start_values('02715')
-    expected = ({A: 3, B: 27, C: 73, D: 20})
-    assert_equal expected, @offset.final_shift
-  end
+  # def test_it_can_find_final_shift_value
+  #   date = "040895"
+  #   @offset.last_four_digits(date)
+  #   @offset.key_start_values('02715')
+  #   expected = ({A: 3, B: 27, C: 73, D: 20})
+  #   assert_equal expected, @offset.final_shift
+  # end
 end

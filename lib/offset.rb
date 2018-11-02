@@ -12,19 +12,19 @@ class Offset
   end
 
   def a_offset(date)
-    @encryption_alphabet = { A: last_four_digits(date)[0]}
+    @encryption_alphabet = { A: last_four_digits(date)[0].to_i}
   end
 
   def b_offset(date)
-    @encryption_alphabet = { B: last_four_digits(date)[1]}
+    @encryption_alphabet = { B: last_four_digits(date)[1].to_i}
   end
 
   def c_offset(date)
-    @encryption_alphabet = { C: last_four_digits(date)[2]}
+    @encryption_alphabet = { C: last_four_digits(date)[2].to_i}
   end
 
   def d_offset(date)
-    @encryption_alphabet = { D: last_four_digits(date)[3]}
+    @encryption_alphabet = { D: last_four_digits(date)[3].to_i}
   end
 
   def key_generation
@@ -44,6 +44,11 @@ class Offset
   end
 
   def final_shift
+    encryption_string_to_i = @encryption_alphabet.map do |k, v|
+      v.to_i
+    end
+    require 'pry'; binding.pry
 
-  end 
+    @starting_alphabet.merge!(encryption_string_to_i)
+  end
 end
