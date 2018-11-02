@@ -23,28 +23,39 @@ class OffsetTest < Minitest::Test
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({A: "1"}), @offset.a_offset(date)
+    assert_equal ({A: 1}), @offset.a_offset(date)
   end
 
   def test_it_can_assign_b_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({B: "0"}), @offset.b_offset(date)
+    assert_equal ({B: 0}), @offset.b_offset(date)
   end
 
   def test_it_can_assign_c_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({C: "2"}), @offset.c_offset(date)
+    assert_equal ({C: 2}), @offset.c_offset(date)
   end
 
-  def test_it_can_assign_c_offset
+  def test_it_can_assign_d_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({D: "5"}), @offset.d_offset(date)
+    assert_equal ({D: 5}), @offset.d_offset(date)
+  end
+
+  def test_it_can_gather_offset_values
+    date = "040895"
+    @offset.offset_by_date(date)
+    @offset.last_four_digits(date)
+    @offset.a_offset(date)
+    @offset.b_offset(date)
+    @offset.c_offset(date)
+    @offset.d_offset(date)
+    assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
   def test_it_can_generate_keys
@@ -52,7 +63,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_assign_key_start_values
-    expected = ({A: '02', B: '27', C: '71', D: '15'})
+    expected = ({A: 02, B: 27, C: 71, D: 15})
     assert_equal expected, @offset.key_start_values('02715')
     assert_equal 4, @offset.key_start_values.length
   end
@@ -61,6 +72,10 @@ class OffsetTest < Minitest::Test
     date = "040895"
     @offset.last_four_digits(date)
     @offset.key_start_values('02715')
+    @offset.a_offset(date)
+    @offset.b_offset(date)
+    @offset.c_offset(date)
+    @offset.d_offset(date)
     expected = ({A: 3, B: 27, C: 73, D: 20})
     assert_equal expected, @offset.final_shift
   end
