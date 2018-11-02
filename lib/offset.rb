@@ -1,5 +1,5 @@
 class Offset
-  attr_reader :encryption_alphabet
+  attr_reader :encryption_alphabet, :final_shift
   def initialize
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
