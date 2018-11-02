@@ -3,6 +3,7 @@ class Offset
   def initialize
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
+    @final_shift = {}
   end
   def offset_by_date(date)
     date.to_i ** 2
@@ -32,10 +33,6 @@ class Offset
     @encryption_alphabet
   end
 
-  # def gather_offset_values
-  #   @encryption_alphabet
-  # end
-
   def key_generation
       rand(99999).to_s.rjust(5)
   end
@@ -45,19 +42,17 @@ class Offset
       random = key_generation
     end
     key_array = random.chars
-      @starting_alphabet[:A] = key_array[0,2].join
-      @starting_alphabet[:B] = key_array[1,2].join
-      @starting_alphabet[:C] = key_array[2,2].join
-      @starting_alphabet[:D] = key_array[3,2].join
+      @starting_alphabet[:A] = key_array[0,2].join.to_i
+      @starting_alphabet[:B] = key_array[1,2].join.to_i
+      @starting_alphabet[:C] = key_array[2,2].join.to_i
+      @starting_alphabet[:D] = key_array[3,2].join.to_i
       @starting_alphabet
   end
 
   def final_shift
-    encryption_string_to_i = @encryption_alphabet.map do |k, v|
-      v.to_i
+    @starting_alphabet.map do |key, value|
+      @final_shift[key] = value + @encryption_alphabet[key]
     end
-    require 'pry'; binding.pry
-
-    @starting_alphabet.merge!(encryption_string_to_i)
+    @final_shift
   end
 end

@@ -40,7 +40,7 @@ class OffsetTest < Minitest::Test
     assert_equal ({C: 2}), @offset.c_offset(date)
   end
 
-  def test_it_can_assign_c_offset
+  def test_it_can_assign_d_offset
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
@@ -55,7 +55,6 @@ class OffsetTest < Minitest::Test
     @offset.b_offset(date)
     @offset.c_offset(date)
     @offset.d_offset(date)
-    # @offset.gather_offset_values
     assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
@@ -64,16 +63,20 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_assign_key_start_values
-    expected = ({A: '02', B: '27', C: '71', D: '15'})
+    expected = ({A: 02, B: 27, C: 71, D: 15})
     assert_equal expected, @offset.key_start_values('02715')
     assert_equal 4, @offset.key_start_values.length
   end
 
-  # def test_it_can_find_final_shift_value
-  #   date = "040895"
-  #   @offset.last_four_digits(date)
-  #   @offset.key_start_values('02715')
-  #   expected = ({A: 3, B: 27, C: 73, D: 20})
-  #   assert_equal expected, @offset.final_shift
-  # end
+  def test_it_can_find_final_shift_value
+    date = "040895"
+    @offset.last_four_digits(date)
+    @offset.key_start_values('02715')
+    @offset.a_offset(date)
+    @offset.b_offset(date)
+    @offset.c_offset(date)
+    @offset.d_offset(date)
+    expected = ({A: 3, B: 27, C: 73, D: 20})
+    assert_equal expected, @offset.final_shift
+  end
 end
