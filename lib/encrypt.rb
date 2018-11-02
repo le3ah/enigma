@@ -9,4 +9,4 @@ encrypted.write(variable[:message])
 encrypted.close
 
 
-"Created #{second} with the key  #{variable[:key]} and date #{variable[:date]}"
+p "Created #{second} with the key  #{variable[:key]} and date #{variable[:date]}"
