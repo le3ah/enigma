@@ -18,4 +18,11 @@ class OffsetTest < Minitest::Test
     @offset.offset_by_date(date)
     assert_equal "1025", @offset.last_four_digits(date)
   end
+
+  def test_it_can_assign_a_offset
+    date = "040895"
+    @offset.offset_by_date(date)
+    @offset.last_four_digits(date)
+    assert_equal ({A: "1"}), @offset.a_offset
+  end
 end
