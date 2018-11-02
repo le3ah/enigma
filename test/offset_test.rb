@@ -46,4 +46,8 @@ class OffsetTest < Minitest::Test
     @offset.last_four_digits(date)
     assert_equal ({D: "5"}), @offset.d_offset(date)
   end
+
+  def test_it_can_generate_keys
+    assert_equal 5, @offset.key_generation.length
+  end
 end
