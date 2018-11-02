@@ -25,4 +25,12 @@ class Offset
   def d_offset(date)
     @encryption_alphabet = { D: last_four_digits(date)[3]}
   end
+
+  def key_generation
+    if rand(99999).to_s.length < 5
+      rand(99999).rjust(5).to_s
+    else
+      rand(99999).to_s
+    end
+  end
 end
