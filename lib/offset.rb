@@ -31,10 +31,10 @@ class Offset
       rand(99999).to_s.rjust(5)
   end
 
-  def key_start_values(random)
-    # if random == nil
-    #   random = key_generation
-    # end
+  def key_start_values(random = nil)
+    if random == nil
+      random = key_generation
+    end
     key_array = random.chars
       @starting_alphabet[:A] = key_array[0,2].join
       @starting_alphabet[:B] = key_array[1,2].join
