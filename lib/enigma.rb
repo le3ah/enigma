@@ -7,6 +7,6 @@ class Enigma
  end
 
  def offset_by_date(date)
-   date.strftime('%d%m%y').to_i ** 2
+   date.to_i ** 2
  end
 end
