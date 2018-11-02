@@ -42,4 +42,8 @@ class Offset
       @starting_alphabet[:D] = key_array[3,2].join
       @starting_alphabet
   end
+
+  def final_shift
+
+  end 
 end
