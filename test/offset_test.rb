@@ -47,17 +47,17 @@ class OffsetTest < Minitest::Test
     assert_equal ({D: 5}), @offset.d_offset(date)
   end
 
-  # def test_it_can_gather_offset_values
-  #   date = "040895"
-  #   @offset.offset_by_date(date)
-  #   @offset.last_four_digits(date)
-  #   @offset.a_offset(date)
-  #   @offset.b_offset(date)
-  #   @offset.c_offset(date)
-  #   @offset.d_offset(date)
-  #   @offset.gather_offset_values
-  #   assert_equal ({A: })
-  # end
+  def test_it_can_gather_offset_values
+    date = "040895"
+    @offset.offset_by_date(date)
+    @offset.last_four_digits(date)
+    @offset.a_offset(date)
+    @offset.b_offset(date)
+    @offset.c_offset(date)
+    @offset.d_offset(date)
+    @offset.gather_offset_values
+    assert_equal ({A: 1, B: 0, C: 2, D: 5})
+  end
 
   def test_it_can_generate_keys
     assert_equal 5, @offset.key_generation.length

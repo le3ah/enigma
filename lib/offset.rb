@@ -27,6 +27,9 @@ class Offset
     @encryption_alphabet = { D: last_four_digits(date)[3].to_i}
   end
 
+  def gather_offset_values
+  end
+
   def key_generation
       rand(99999).to_s.rjust(5)
   end
