@@ -23,6 +23,6 @@ class OffsetTest < Minitest::Test
     date = "040895"
     @offset.offset_by_date(date)
     @offset.last_four_digits(date)
-    assert_equal ({A: "1"}), @offset.a_offset
+    assert_equal ({A: "1"}), @offset.a_offset(date)
   end
 end
