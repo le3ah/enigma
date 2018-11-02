@@ -7,6 +7,7 @@ class EnigmaTest < Minitest::Test
   def setup
     @e = Enigma.new
   end
+  
   def test_it_exists
     assert_instance_of Enigma, @e
   end
@@ -19,15 +20,5 @@ class EnigmaTest < Minitest::Test
   #   assert_equal '1234lkjuoiu', output_2
   # end
 
-  def test_it_can_offset_by_date
-    date = "040895"
-    assert_equal 1672401025, @e.offset_by_date(date)
-  end
 
-  def test_it_can_select_last_four_digits_of_offset
-    skip
-    date = Date.parse("August 4, 1995")
-    @e.offset_by_date(date)
-    assert_equal 1025, @se.last_four_digits
-  end
 end
