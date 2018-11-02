@@ -16,6 +16,6 @@ class OffsetTest < Minitest::Test
   def test_it_can_select_last_four_digits_of_offset
     date = "040895"
     @offset.offset_by_date(date)
-    assert_equal 1025, @offset.last_four_digits
+    assert_equal "1025", @offset.last_four_digits(date)
   end
 end
