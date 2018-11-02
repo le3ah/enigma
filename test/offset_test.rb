@@ -32,4 +32,11 @@ class OffsetTest < Minitest::Test
     @offset.last_four_digits(date)
     assert_equal ({B: "0"}), @offset.b_offset(date)
   end
+
+  def test_it_can_assign_c_offset
+    date = "040895"
+    @offset.offset_by_date(date)
+    @offset.last_four_digits(date)
+    assert_equal ({C: "2"}), @offset.c_offset(date)
+  end
 end
