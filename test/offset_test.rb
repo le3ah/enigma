@@ -14,8 +14,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_select_last_four_digits_of_offset
-    skip
-    date = Date.parse("August 4, 1995")
+    date = "040895"
     @offset.offset_by_date(date)
     assert_equal 1025, @offset.last_four_digits
   end
