@@ -3,10 +3,15 @@ require_relative './test_helper'
 class EnigmaTest < Minitest::Test
   def setup
     @e = Enigma.new
+    @today = Date.today
   end
 
   def test_it_exists
     assert_instance_of Enigma, @e
+  end
+
+  def test_it_has_a_default_date_of_today
+    assert_equal @today, @e.date
   end
 
   def test_it_has_a_starting_character_set
@@ -15,6 +20,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_rotate_alphabet_by_final_shift
+    date = "040895"
     message = "hello world"
     assert_equal "keder ohulw", @e.character_rotation(message)
   end
