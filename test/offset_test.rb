@@ -2,7 +2,7 @@ require_relative './test_helper'
 
 class OffsetTest < Minitest::Test
   def setup
-    @offset = Offset.new("040895")
+    @offset = Offset.new('040895', '02715')
   end
 
   def test_it_exists
@@ -13,6 +13,11 @@ class OffsetTest < Minitest::Test
     offset_today = Offset.new
     today = Date.today
     assert_equal today, offset_today.date
+  end
+
+  def test_if_key_is_nil_random_key_generates
+    offset_with_nil_key = Offset.new('040895', nil)
+    assert_equal 4, offset_with_nil_key.key_start_values.length
   end
 
   def test_it_can_generate_offset_by_date_values
@@ -64,13 +69,13 @@ class OffsetTest < Minitest::Test
 
   def test_it_can_assign_key_start_values
     expected = ({A: 02, B: 27, C: 71, D: 15})
-    assert_equal expected, @offset.key_start_values('02715')
+    assert_equal expected, @offset.key_start_values
     assert_equal 4, @offset.key_start_values.length
   end
 
   def test_it_can_find_final_shift_value
     @offset.last_four_digits_of_date_value
-    @offset.key_start_values('02715')
+    @offset.key_start_values
     @offset.a_offset
     @offset.b_offset
     @offset.c_offset
