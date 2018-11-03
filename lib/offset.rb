@@ -6,31 +6,31 @@ class Offset
     @final_shift = {}
     @date = date
   end
-  def offset_by_date
+  def offset_by_date_values
     date.to_i ** 2
   end
 
-  def last_four_digits
-    offset_by_date.to_s.slice(-4..-1)
+  def last_four_digits_of_date_value
+    offset_by_date_values.to_s.slice(-4..-1)
   end
 
   def a_offset
-    encryption_alphabet[:A] = last_four_digits[0].to_i
+    encryption_alphabet[:A] = last_four_digits_of_date_value[0].to_i
     encryption_alphabet
   end
 
   def b_offset
-    encryption_alphabet[:B] = last_four_digits[1].to_i
+    encryption_alphabet[:B] = last_four_digits_of_date_value[1].to_i
     encryption_alphabet
   end
 
   def c_offset
-    encryption_alphabet[:C] = last_four_digits[2].to_i
+    encryption_alphabet[:C] = last_four_digits_of_date_value[2].to_i
     encryption_alphabet
   end
 
   def d_offset
-    encryption_alphabet[:D] = last_four_digits[3].to_i
+    encryption_alphabet[:D] = last_four_digits_of_date_value[3].to_i
     encryption_alphabet
   end
 

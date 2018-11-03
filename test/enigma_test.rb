@@ -20,9 +20,9 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_rotate_alphabet_by_final_shift
-    date = "040895"
+    enigma = Enigma.new("040895")
     message = "hello world"
-    assert_equal "keder ohulw", @e.character_rotation(message)
+    assert_equal "keder ohulw", enigma.character_rotation(message)
   end
 
   # def test_it_can_encrypt_my_message

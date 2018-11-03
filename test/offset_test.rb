@@ -12,45 +12,45 @@ class OffsetTest < Minitest::Test
   def test_it_has_a_default_date_of_today
     offset_today = Offset.new
     today = Date.today
-    assert_equal today, offset_today.date 
+    assert_equal today, offset_today.date
   end
 
-  def test_it_can_offset_by_date
-    assert_equal 1672401025, @offset.offset_by_date
+  def test_it_can_generate_offset_by_date_values
+    assert_equal 1672401025, @offset.offset_by_date_values
   end
 
   def test_it_can_select_last_four_digits_of_offset
-    @offset.offset_by_date
-    assert_equal "1025", @offset.last_four_digits
+    @offset.offset_by_date_values
+    assert_equal "1025", @offset.last_four_digits_of_date_value
   end
 
   def test_it_can_assign_a_offset
-    @offset.offset_by_date
-    @offset.last_four_digits
+    @offset.offset_by_date_values
+    @offset.last_four_digits_of_date_value
     assert_equal ({A: 1}), @offset.a_offset
   end
 
   def test_it_can_assign_b_offset
-    @offset.offset_by_date
-    @offset.last_four_digits
+    @offset.offset_by_date_values
+    @offset.last_four_digits_of_date_value
     assert_equal ({B: 0}), @offset.b_offset
   end
 
   def test_it_can_assign_c_offset
-    @offset.offset_by_date
-    @offset.last_four_digits
+    @offset.offset_by_date_values
+    @offset.last_four_digits_of_date_value
     assert_equal ({C: 2}), @offset.c_offset
   end
 
   def test_it_can_assign_d_offset
-    @offset.offset_by_date
-    @offset.last_four_digits
+    @offset.offset_by_date_values
+    @offset.last_four_digits_of_date_value
     assert_equal ({D: 5}), @offset.d_offset
   end
 
   def test_it_can_gather_offset_values
-    @offset.offset_by_date
-    @offset.last_four_digits
+    @offset.offset_by_date_values
+    @offset.last_four_digits_of_date_value
     @offset.a_offset
     @offset.b_offset
     @offset.c_offset
@@ -69,7 +69,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_find_final_shift_value
-    @offset.last_four_digits
+    @offset.last_four_digits_of_date_value
     @offset.key_start_values('02715')
     @offset.a_offset
     @offset.b_offset
