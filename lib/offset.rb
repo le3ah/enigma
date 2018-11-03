@@ -1,36 +1,37 @@
 class Offset
-  attr_reader :encryption_alphabet, :final_shift
-  def initialize
+  attr_reader :encryption_alphabet, :final_shift, :date
+  def initialize(date = Date.today)
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
     @final_shift = {}
+    @date = date
   end
-  def offset_by_date(date)
+  def offset_by_date
     date.to_i ** 2
   end
 
-  def last_four_digits(date)
-    offset_by_date(date).to_s.slice(-4..-1)
+  def last_four_digits
+    offset_by_date.to_s.slice(-4..-1)
   end
 
-  def a_offset(date)
-    @encryption_alphabet[:A] = last_four_digits(date)[0].to_i
-    @encryption_alphabet
+  def a_offset
+    encryption_alphabet[:A] = last_four_digits[0].to_i
+    encryption_alphabet
   end
 
-  def b_offset(date)
-    @encryption_alphabet[:B] = last_four_digits(date)[1].to_i
-    @encryption_alphabet
+  def b_offset
+    encryption_alphabet[:B] = last_four_digits[1].to_i
+    encryption_alphabet
   end
 
-  def c_offset(date)
-    @encryption_alphabet[:C] = last_four_digits(date)[2].to_i
-    @encryption_alphabet
+  def c_offset
+    encryption_alphabet[:C] = last_four_digits[2].to_i
+    encryption_alphabet
   end
 
-  def d_offset(date)
-    @encryption_alphabet[:D] = last_four_digits(date)[3].to_i
-    @encryption_alphabet
+  def d_offset
+    encryption_alphabet[:D] = last_four_digits[3].to_i
+    encryption_alphabet
   end
 
   def key_generation
@@ -51,7 +52,7 @@ class Offset
 
   def final_shift
     @starting_alphabet.map do |key, value|
-      @final_shift[key] = value + @encryption_alphabet[key]
+      @final_shift[key] = value + encryption_alphabet[key]
     end
     @final_shift
   end

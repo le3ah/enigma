@@ -1,4 +1,5 @@
 require 'date'
+require './lib/offset'
 
 class Enigma
   attr_reader :character_set, :key, :date
@@ -9,7 +10,16 @@ class Enigma
   end
 
 
-  
+  def character_rotation(message)
+    message_array = message.downcase.chars
+    message_array.map do |char|
+    index_position = @character_set.index(char)
+    offset = Offset.new
+    offset.final_shift.map do |key, value|
+      index_position + value
+      end
+    end
+  end
 
   # def encrypt(message, key = "12345", date = Date.today)
   #  message_array = message.downcase.chars
