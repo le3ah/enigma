@@ -13,10 +13,10 @@ class Enigma
   def character_rotation(message)
     message_array = message.downcase.chars
     message_array.map do |char|
-    index_position = @character_set.index(char)
-    offset = Offset.new(date)
-    offset.final_shift.map do |key, value|
-      index_position + value
+      index_position = @character_set.index(char)
+      offset = Offset.new(date)
+      offset.final_shift.map do |key, value|
+        index_position + value
       end
     end
   end
