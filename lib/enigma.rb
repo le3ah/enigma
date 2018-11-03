@@ -9,6 +9,7 @@ class Enigma
   end
 
 
+  
 
   # def encrypt(message, key = "12345", date = Date.today)
   #  message_array = message.downcase.chars

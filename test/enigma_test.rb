@@ -14,20 +14,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @e.character_set
   end
 
-  # def test_it_can_rotate_alphabet_by_final_shift
-  #   @offset = Offset.new
-  #   date = "040895"
-  #   @offset.offset_by_date(date)
-  #   @offset.last_four_digits(date)
-  #   @offset.a_offset(date)
-  #   @offset.b_offset(date)
-  #   @offset.c_offset(date)
-  #   @offset.d_offset(date)
-  #   @offset.key_start_values('02715')
-  #   @offset.final_shift
-  #   message = "hello world"
-  #
-  # end
+  def test_it_can_rotate_alphabet_by_final_shift
+    final_shift = ({A: 3, B: 27, C: 73, D: 20})
+    message = "hello world"
+    assert_equal "keder ohulw", @e.character_rotation(message, final_shift)
+  end
 
   # def test_it_can_encrypt_my_message
   #   message = "hello world"
