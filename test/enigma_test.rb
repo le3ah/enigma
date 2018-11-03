@@ -16,13 +16,7 @@ class EnigmaTest < Minitest::Test
 
 
 
-  def test_it_can_rotate_alphabet_by_final_shift
-    enigma = Enigma.new('040895')
-    offset = Offset.new('040895', '02715')
-    offset.final_shift
-    message = "hello world"
-    assert_equal "keder ohulw", enigma.character_rotation(message)
-  end
+
 
   # def test_it_can_encrypt_my_message
   #   message = "hello world"
