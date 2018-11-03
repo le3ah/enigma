@@ -15,23 +15,10 @@ class Offset
     offset_by_date_values.to_s.slice(-4..-1)
   end
 
-  def a_offset
-    encryption_alphabet[:A] = last_four_digits_of_date_value[0].to_i
-    encryption_alphabet
-  end
-
-  def b_offset
-    encryption_alphabet[:B] = last_four_digits_of_date_value[1].to_i
-    encryption_alphabet
-  end
-
-  def c_offset
-    encryption_alphabet[:C] = last_four_digits_of_date_value[2].to_i
-    encryption_alphabet
-  end
-
-  def d_offset
-    encryption_alphabet[:D] = last_four_digits_of_date_value[3].to_i
+  def create_offsets
+    [:A, :B, :C, :D].each_with_index do |k, index|
+      encryption_alphabet[k] = last_four_digits_of_date_value[index].to_i
+    end
     encryption_alphabet
   end
 
@@ -54,10 +41,7 @@ class Offset
   def final_shift
     last_four_digits_of_date_value
     key_start_values
-    a_offset
-    b_offset
-    c_offset
-    d_offset
+    create_offsets
     @starting_alphabet.map do |k, value|
       @final_shift[k] = value + encryption_alphabet[k]
     end
