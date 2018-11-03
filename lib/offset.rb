@@ -52,6 +52,8 @@ class Offset
   end
 
   def final_shift
+    last_four_digits_of_date_value
+    key_start_values
     a_offset
     b_offset
     c_offset
