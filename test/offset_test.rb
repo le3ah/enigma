@@ -4,8 +4,15 @@ class OffsetTest < Minitest::Test
   def setup
     @offset = Offset.new("040895")
   end
+
   def test_it_exists
     assert_instance_of Offset, @offset
+  end
+
+  def test_it_has_a_default_date_of_today
+    offset_today = Offset.new
+    today = Date.today
+    assert_equal today, offset_today.date 
   end
 
   def test_it_can_offset_by_date
