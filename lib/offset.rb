@@ -1,5 +1,7 @@
 class Offset
-  attr_reader :encryption_alphabet, :final_shift, :date
+  attr_reader :encryption_alphabet,
+              :final_shift,
+              :date
   def initialize(date = Date.today, key = nil)
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
