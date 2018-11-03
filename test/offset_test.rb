@@ -53,13 +53,17 @@ class OffsetTest < Minitest::Test
     assert_equal ({D: 5}), @offset.d_offset
   end
 
-  def test_it_can_gather_offset_values
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    @offset.a_offset
-    @offset.b_offset
-    @offset.c_offset
-    @offset.d_offset
+  # def test_it_can_gather_offset_values
+  #   @offset.offset_by_date_values
+  #   @offset.last_four_digits_of_date_value
+  #   @offset.a_offset
+  #   @offset.b_offset
+  #   @offset.c_offset
+  #   @offset.d_offset
+  #   assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
+  # end
+  def test_it_can_create_offsets
+    @offset.create_offsets
     assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
