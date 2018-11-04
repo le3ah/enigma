@@ -15,9 +15,6 @@ class EnigmaTest < Minitest::Test
   end
 
 
-
-
-
   # def test_it_can_encrypt_my_message
   #   message = "hello world"
   #   output = @e.encrypt(message, "02715", "040895")
