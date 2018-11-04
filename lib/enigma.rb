@@ -3,7 +3,7 @@ require './lib/offset'
 
 class Enigma
   attr_reader :key, :date
-  def initialize(date = Date.today)
+  def initialize
     @key = key
     @date = date
   end
@@ -27,12 +27,20 @@ class Enigma
     offset = Offset.new(date, key)
     decryption = Decryption.new
     output_message = decryption.rotate(message, offset.final_shift)
+    output_construction(output_message, key, date, :decryption)
+  end
+
+  private
+  def output_construction(output_message, key, date, flag)
     output = {}
-    output[:decryption] = output_message
+      if flag == :decryption
+      output[:decryption] = output_message
+      else
+      output[:encryption] = output_message
+      end
     output[:key] = key
     output[:date] = date
     output
   end
-
 
 end

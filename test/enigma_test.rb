@@ -3,16 +3,16 @@ require_relative './test_helper'
 class EnigmaTest < Minitest::Test
   def setup
     @e = Enigma.new
-    @today = Date.today
+    # @today = Date.today
   end
 
   def test_it_exists
     assert_instance_of Enigma, @e
   end
 
-  def test_it_has_a_default_date_of_today
-    assert_equal @today, @e.date
-  end
+  # def test_it_has_a_default_date_of_today
+  #   assert_equal @today, @e.date
+  # end
 
   def test_it_can_encrypt_my_message
     message = "hello world"
