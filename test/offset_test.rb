@@ -15,6 +15,14 @@ class OffsetTest < Minitest::Test
     assert_equal today, offset_today.date
   end
 
+  def test_the_starting_alphabet_is_empty
+    assert_equal ({}), @offset.starting_alphabet
+  end
+
+  def test_it_starts_with_an_empty_encryption_alphabet
+    assert_equal ({}), @offset.encryption_alphabet
+  end
+
   def test_if_key_is_nil_random_key_generates
     offset_with_nil_key = Offset.new('040895', nil)
     assert_equal 4, offset_with_nil_key.key_start_values.length
