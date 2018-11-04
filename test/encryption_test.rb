@@ -16,8 +16,10 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_rotate_based_on_different_shifts
     shift_value = ({A: 3, B: 27, C: 73, D: 20})
-    message = 'hello'
-    assert_equal "keder", @encryption.rotate(message, shift_value)
+    message_1 = 'hello'
+    message_2 = 'hello world'
+    assert_equal 'keder', @encryption.rotate(message_1, shift_value)
+    assert_equal 'keder ohulw', @encryption.rotate(message_2, shift_value)
   end
 
 
