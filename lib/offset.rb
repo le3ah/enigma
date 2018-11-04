@@ -1,9 +1,8 @@
 class Offset
+  attr_accessor :date, :key
   attr_reader :starting_alphabet,
               :encryption_alphabet,
-              :final_shift,
-              :date,
-              :key
+              :final_shift
   def initialize(date = Date.today, key = nil)
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
@@ -11,8 +10,14 @@ class Offset
     @date = date
     @key = key
   end
+
   def offset_by_date_values
-    date.to_i ** 2
+    if date.class == Date
+      new_date = date.strftime('%d%m%y')
+      new_date.to_i ** 2
+    else
+      date.to_i ** 2
+    end
   end
 
   def last_four_digits_of_date_value
@@ -27,7 +32,7 @@ class Offset
   end
 
   def key_generation
-      rand(99999).to_s.rjust(5)
+      rand(99999).to_s.rjust(5, '0')
   end
 
   def key_start_values
