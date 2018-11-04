@@ -14,13 +14,11 @@ class EnigmaTest < Minitest::Test
     assert_equal @today, @e.date
   end
 
-
   # def test_it_can_encrypt_my_message
   #   message = "hello world"
   #   output = @e.encrypt(message, "02715", "040895")
   #   expected = ({encryption: "keder ohulw", key: "02715", date: "040895"})
   #   assert_equal expected, output
   # end
-
 
 end

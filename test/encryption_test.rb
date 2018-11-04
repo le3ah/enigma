@@ -21,7 +21,4 @@ class EncryptionTest < Minitest::Test
     assert_equal 'keder', @encryption.rotate(message_1, shift_value)
     assert_equal 'keder ohulw', @encryption.rotate(message_2, shift_value)
   end
-
-
-
 end
