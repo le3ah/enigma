@@ -14,14 +14,10 @@ class EncryptionTest < Minitest::Test
     assert_equal expected, @encryption.character_set
   end
 
-  def test_it_can_rotate_given_letters_in_message
-    assert_equal "khoor", @encryption.rotate("hello", 3)
-    assert_equal "arx", @encryption.rotate("you", 3)
-  end
-
   def test_it_can_rotate_based_on_different_shifts
-    shift_value = {A: 3, B: 27, C: 73, D: 20}
-    assert_equal "keder", @encryption.rotate("hello", shift_value)
+    shift_value = ({A: 3, B: 27, C: 73, D: 20})
+    message = 'hello'
+    assert_equal "keder", @encryption.rotate(message, shift_value)
   end
 
   # def test_it_can_rotate_alphabet_by_final_shift
