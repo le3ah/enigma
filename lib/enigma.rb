@@ -30,8 +30,15 @@ class Enigma
       output[:encryption] = output_message
     end
     output[:key] = key
-    output[:date] = date
+    output[:date] = formatted_date(date)
     output
   end
-
+  
+  def formatted_date(date)
+    if date.class == Date
+      date.strftime('%d%m%y')
+    else
+      date
+    end
+  end
 end
