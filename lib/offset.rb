@@ -3,7 +3,7 @@ class Offset
               :encryption_alphabet,
               :final_shift,
               :date,
-              :key 
+              :key
   def initialize(date = Date.today, key = nil)
     @starting_alphabet = Hash.new(0)
     @encryption_alphabet = {}
@@ -19,7 +19,7 @@ class Offset
     offset_by_date_values.to_s.slice(-4..-1)
   end
 
-  def create_offsets
+  def create_offsets_from_date
     [:A, :B, :C, :D].each_with_index do |k, index|
       encryption_alphabet[k] = last_four_digits_of_date_value[index].to_i
     end
@@ -45,7 +45,7 @@ class Offset
   def final_shift
     last_four_digits_of_date_value
     key_start_values
-    create_offsets
+    create_offsets_from_date
     @starting_alphabet.map do |k, value|
       @final_shift[k] = value + encryption_alphabet[k]
     end

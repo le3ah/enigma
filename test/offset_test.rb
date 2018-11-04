@@ -42,8 +42,8 @@ class OffsetTest < Minitest::Test
     assert_equal "1025", @offset.last_four_digits_of_date_value
   end
 
-  def test_it_can_create_offsets
-    @offset.create_offsets
+  def test_it_can_create_offsets_from_date
+    @offset.create_offsets_from_date
     assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
@@ -60,7 +60,7 @@ class OffsetTest < Minitest::Test
   def test_it_can_find_final_shift_value
     @offset.last_four_digits_of_date_value
     @offset.key_start_values
-    @offset.create_offsets
+    @offset.create_offsets_from_date 
     expected = ({A: 3, B: 27, C: 73, D: 20})
     assert_equal expected, @offset.final_shift
   end
