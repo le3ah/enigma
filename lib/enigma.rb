@@ -14,11 +14,7 @@ class Enigma
     offset = Offset.new(date, key)
     encryption = Encryption.new
     output_message = encryption.rotate(message, offset.final_shift)
-    output = {}
-    output[:encryption] = output_message
-    output[:key] = key
-    output[:date] = date
-    output
+    output_construction(output_message, key, date, :encryption)
   end
 
   def decrypt(message, key, date)
