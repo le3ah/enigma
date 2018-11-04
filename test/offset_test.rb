@@ -15,6 +15,11 @@ class OffsetTest < Minitest::Test
     assert_equal today, offset_today.date
   end
 
+  def test_key_defaults_to_nil
+    offset_today = Offset.new
+    assert_nil offset_today.key
+  end
+
   def test_the_starting_alphabet_is_empty
     assert_equal ({}), @offset.starting_alphabet
   end
