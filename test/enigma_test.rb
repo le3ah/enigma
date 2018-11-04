@@ -33,4 +33,16 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, output
   end
 
+  def test_it_can_encrypt_with_todays_date_and_random_key
+    enigma = Enigma.new
+    offset = Offset.new(Date.today)
+    encryption = Encryption.new
+    output_message = encryption.rotate("hello world", offset.final_shift)
+    output = enigma.encrypt("hello world")
+    date = Date.today.strftime('%d%m%y')
+    key = offset.key
+    expected = ({encryption: output_message, key: key, date: date})
+    assert_equal expected, output
+  end
+
 end

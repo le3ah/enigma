@@ -32,7 +32,7 @@ class Offset
   end
 
   def key_generation
-      rand(99999).to_s.rjust(5)
+      rand(99999).to_s.rjust(5, '0')
   end
 
   def key_start_values
