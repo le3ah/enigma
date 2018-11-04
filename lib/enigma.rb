@@ -4,8 +4,6 @@ require './lib/offset'
 class Enigma
 
   def encrypt(message, key = nil, date = Date.today)
-    # @date = date
-    # @key = key
     offset = Offset.new(date, key)
     encryption = Encryption.new
     new_key = key.nil? ? offset.key : key
@@ -14,8 +12,6 @@ class Enigma
   end
 
   def decrypt(message, key = nil, date = Date.today)
-    # @date = date
-    # @key = key
     offset = Offset.new(date, key)
     decryption = Decryption.new
     output_message = decryption.rotate(message, offset.final_shift)
