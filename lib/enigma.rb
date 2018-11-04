@@ -21,6 +21,18 @@ class Enigma
     output
   end
 
+  def decrypt(message, key, date)
+    @date = date
+    @key = key
+    offset = Offset.new(date, key)
+    decryption = Decryption.new
+    output_message = decryption.rotate(message, offset.final_shift)
+    output = {}
+    output[:decryption] = output_message
+    output[:key] = key
+    output[:date] = date
+    output
+  end
 
 
 end
