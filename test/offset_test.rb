@@ -15,6 +15,19 @@ class OffsetTest < Minitest::Test
     assert_equal today, offset_today.date
   end
 
+  def test_key_defaults_to_nil
+    offset_today = Offset.new
+    assert_nil offset_today.key
+  end
+
+  def test_the_starting_alphabet_is_empty
+    assert_equal ({}), @offset.starting_alphabet
+  end
+
+  def test_it_starts_with_an_empty_encryption_alphabet
+    assert_equal ({}), @offset.encryption_alphabet
+  end
+
   def test_if_key_is_nil_random_key_generates
     offset_with_nil_key = Offset.new('040895', nil)
     assert_equal 4, offset_with_nil_key.key_start_values.length
@@ -29,37 +42,8 @@ class OffsetTest < Minitest::Test
     assert_equal "1025", @offset.last_four_digits_of_date_value
   end
 
-  def test_it_can_assign_a_offset
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    assert_equal ({A: 1}), @offset.a_offset
-  end
-
-  def test_it_can_assign_b_offset
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    assert_equal ({B: 0}), @offset.b_offset
-  end
-
-  def test_it_can_assign_c_offset
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    assert_equal ({C: 2}), @offset.c_offset
-  end
-
-  def test_it_can_assign_d_offset
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    assert_equal ({D: 5}), @offset.d_offset
-  end
-
-  def test_it_can_gather_offset_values
-    @offset.offset_by_date_values
-    @offset.last_four_digits_of_date_value
-    @offset.a_offset
-    @offset.b_offset
-    @offset.c_offset
-    @offset.d_offset
+  def test_it_can_create_offsets_from_date
+    @offset.create_offsets_from_date
     assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
   end
 
@@ -76,10 +60,7 @@ class OffsetTest < Minitest::Test
   def test_it_can_find_final_shift_value
     @offset.last_four_digits_of_date_value
     @offset.key_start_values
-    @offset.a_offset
-    @offset.b_offset
-    @offset.c_offset
-    @offset.d_offset
+    @offset.create_offsets_from_date 
     expected = ({A: 3, B: 27, C: 73, D: 20})
     assert_equal expected, @offset.final_shift
   end
