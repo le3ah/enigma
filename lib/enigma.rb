@@ -2,13 +2,8 @@ require 'date'
 require './lib/offset'
 
 class Enigma
-  attr_reader :key, :date
-  def initialize
-    @key = key
-    @date = date
-  end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key = nil, date = Date.today)
     @date = date
     @key = key
     offset = Offset.new(date, key)
@@ -17,7 +12,7 @@ class Enigma
     output_construction(output_message, key, date, :encryption)
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key = nil, date = Date.today)
     @date = date
     @key = key
     offset = Offset.new(date, key)
@@ -29,11 +24,11 @@ class Enigma
   private
   def output_construction(output_message, key, date, flag)
     output = {}
-      if flag == :decryption
+    if flag == :decryption
       output[:decryption] = output_message
-      else
+    else
       output[:encryption] = output_message
-      end
+    end
     output[:key] = key
     output[:date] = date
     output
