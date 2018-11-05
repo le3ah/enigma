@@ -6,8 +6,8 @@ class Enigma
   def encrypt(message, key = nil, date = Date.today)
     offset = Offset.new(date, key)
     encryption = Encryption.new
-    new_key = key.nil? ? offset.key : key
     output_message = encryption.rotate(message, offset.final_shift)
+    new_key = key.nil? ? offset.key : key
     output_construction(output_message, new_key, date, :encryption)
   end
 
