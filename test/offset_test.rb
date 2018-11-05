@@ -22,7 +22,7 @@ class OffsetTest < Minitest::Test
 
   def test_key_can_change_when_it_starts_as_nil
     offset_today = Offset.new
-    offset_today.key_start_values 
+    offset_today.key_start_values
     refute_nil offset_today.key
   end
 
@@ -36,6 +36,11 @@ class OffsetTest < Minitest::Test
 
   def test_it_can_generate_offset_by_date_values
     assert_equal 1672401025, @offset.offset_by_date_values
+  end
+
+  def test_it_can_generate_offset_by_date_values_when_given_date_class
+    offset = Offset.new(Date.today, '02715')
+    assert_equal Integer, offset.offset_by_date_values.class 
   end
 
   def test_it_can_select_last_four_digits_of_offset
