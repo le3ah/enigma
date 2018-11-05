@@ -28,11 +28,6 @@ class OffsetTest < Minitest::Test
     assert_equal ({}), @offset.encryption_alphabet
   end
 
-  def test_if_key_is_nil_random_key_generates
-    offset_with_nil_key = Offset.new('040895', nil)
-    assert_equal 4, offset_with_nil_key.key_start_values.length
-  end
-
   def test_it_can_generate_offset_by_date_values
     assert_equal 1672401025, @offset.offset_by_date_values
   end
@@ -45,6 +40,11 @@ class OffsetTest < Minitest::Test
   def test_it_can_create_offsets_from_date
     @offset.create_offsets_from_date
     assert_equal ({A: 1, B: 0, C: 2, D: 5}), @offset.encryption_alphabet
+  end
+
+  def test_if_key_is_nil_random_key_generates
+    offset_with_nil_key = Offset.new('040895', nil)
+    assert_equal 4, offset_with_nil_key.key_start_values.length
   end
 
   def test_it_can_generate_keys
@@ -60,7 +60,7 @@ class OffsetTest < Minitest::Test
   def test_it_can_find_final_shift_value
     @offset.last_four_digits_of_date_value
     @offset.key_start_values
-    @offset.create_offsets_from_date 
+    @offset.create_offsets_from_date
     expected = ({A: 3, B: 27, C: 73, D: 20})
     assert_equal expected, @offset.final_shift
   end
