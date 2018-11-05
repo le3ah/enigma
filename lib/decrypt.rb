@@ -6,7 +6,7 @@ first, second, third, fourth = ARGV
 encrypted = File.open(first, "r")
 decrypted = File.open(second, "w")
 
-variable = Enigma.new.decrypt(encrypted.read)
+variable = Enigma.new.decrypt(encrypted.read, third, fourth)
 decrypted.write(variable[:decryption])
 decrypted.close
 
