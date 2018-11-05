@@ -48,12 +48,14 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     offset = Offset.new(Date.today)
     encryption = Encryption.new
-    output_message = encryption.rotate("hello world", offset.final_shift)
-    output = enigma.encrypt("hello world")
+    message = "hello world"
+    output_message = encryption.rotate(message, offset.final_shift)
+    enigma.encrypt(message)
     date = Date.today.strftime('%d%m%y')
     key = offset.key
     expected = ({encryption: output_message, key: key, date: date})
-    assert_equal expected, output
+    assert_equal true, expected[:encryption].length == message.length
+    assert_equal false, expected[:key].nil?
   end
 
 end
