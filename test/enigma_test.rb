@@ -58,4 +58,13 @@ class EnigmaTest < Minitest::Test
     assert_equal false, expected[:key].nil?
   end
 
+  def test_it_can_out_put_message_in_proper_format
+    output = {encryption: 'go irish', key: '12345', date: '050287'}
+    assert_equal output, @e.output_construction('go irish', '12345', '050287', :encryption)
+  end
+
+  def test_it_can_format_date_when_not_starting_as_string
+    assert_equal String, @e.formatted_date(Date.today).class
+    assert_equal 6, @e.formatted_date(Date.today).length
+  end
 end
