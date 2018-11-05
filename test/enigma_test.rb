@@ -27,17 +27,18 @@ class EnigmaTest < Minitest::Test
     offset = Offset.new(Date.today, "02715")
     encryption = Encryption.new
     output_message = encryption.rotate("hello world", offset.final_shift)
-    output = @e.encrypt("hello world", "02715")
+    encrypted = @e.encrypt("hello world", "02715")
     date = Date.today.strftime('%d%m%y')
     expected = ({encryption: output_message, key: "02715", date: date})
-    assert_equal expected, output
+    assert_equal expected, encrypted
   end
 
   def test_it_can_decrypt_with_todays_date
     offset = Offset.new(Date.today, "02715")
+    encrypted = @e.encrypt("hello world", "02715")
     decryption = Decryption.new
-    output_message = decryption.rotate("keder ohulw", offset.final_shift)
-    output = @e.decrypt("keder ohulw", "02715")
+    output_message = decryption.rotate(encrypted[:encryption], offset.final_shift)
+    output = @e.decrypt(encrypted[:encryption], "02715")
     date = Date.today.strftime('%d%m%y')
     expected = ({decryption: output_message, key: "02715", date: date})
     assert_equal expected, output

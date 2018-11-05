@@ -20,6 +20,12 @@ class OffsetTest < Minitest::Test
     assert_nil offset_today.key
   end
 
+  def test_key_can_change_when_it_starts_as_nil
+    offset_today = Offset.new
+    offset_today.key_start_values 
+    refute_nil offset_today.key
+  end
+
   def test_the_starting_alphabet_is_empty
     assert_equal ({}), @offset.starting_alphabet
   end
