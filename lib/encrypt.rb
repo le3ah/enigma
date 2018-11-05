@@ -5,7 +5,6 @@ first, second = ARGV
 message = File.open(first, "r")
 encrypted = File.open(second, "w")
 
-# message.read
 variable = Enigma.new.encrypt(message.read)
 encrypted.write(variable[:encryption])
 encrypted.close
