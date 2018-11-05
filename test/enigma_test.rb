@@ -58,4 +58,8 @@ class EnigmaTest < Minitest::Test
     assert_equal false, expected[:key].nil?
   end
 
+  def test_it_can_format_date_when_not_starting_as_string
+    assert_equal String, @e.formatted_date(Date.today).class
+    assert_equal 6, @e.formatted_date(Date.today).length 
+  end
 end

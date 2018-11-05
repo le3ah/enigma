@@ -18,7 +18,7 @@ class Enigma
     output_construction(output_message, key, date, :decryption)
   end
 
-  private
+  
   def output_construction(output_message, key, date, flag)
     output = {}
     if flag == :decryption
