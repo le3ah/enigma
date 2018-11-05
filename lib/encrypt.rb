@@ -1,11 +1,14 @@
+require './lib/enigma'
+require './lib/encryption'
 first, second = ARGV
 
 message = File.open(first, "r")
 encrypted = File.open(second, "w")
 
 message.read
-variable = Engima.encrypt(message.read)
-encrypted.write(variable[:message])
+require 'pry'; binding.pry
+variable = Enigma.new.encrypt(message.read)
+encrypted.write(variable[:encryption])
 encrypted.close
 
 
