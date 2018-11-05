@@ -1,5 +1,7 @@
 require 'date'
 require './lib/offset'
+require './lib/encryption'
+require './lib/decryption'
 
 class Enigma
 
@@ -18,7 +20,7 @@ class Enigma
     output_construction(output_message, key, date, :decryption)
   end
 
-  
+
   def output_construction(output_message, key, date, flag)
     output = {}
     if flag == :decryption

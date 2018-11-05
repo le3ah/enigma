@@ -1,3 +1,5 @@
+require 'date'
+
 class Offset
   attr_accessor :date, :key
   attr_reader :starting_alphabet,
